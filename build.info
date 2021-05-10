@@ -1,0 +1,6 @@
+library_name = ntcl-tensor
+modules = tensor converter construction initializer
+api = api
+use_cuda:dependencies = cuda
+uses = ntcl-data ntcl-util
+tests = serial

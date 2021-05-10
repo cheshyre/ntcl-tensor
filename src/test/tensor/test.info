@@ -1,0 +1,1 @@
+regular_tests = tscalar vector matrix tensor_rank3 tensor_rank4 tensor_rank5
