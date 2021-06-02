@@ -20,7 +20,17 @@ external_libraries := ${NTCL_ROOT}/ntcl-data/lib/libntcl-data.a ${NTCL_ROOT}/ntc
 internal_include_dirs := ${NTCL_ROOT}/ntcl-data/include ${NTCL_ROOT}/ntcl-util/include
 
 ifdef use_cuda
-external_libraries += ${CUDA_LIBS} -lstdc++
+external_libraries += -L${CUDA_ROOT}/lib64 -lcudart -lcuda -lstdc++
+endif
+
+ifdef use_hip
+ifeq (${HIP_PLATFORM},amd)
+external_libraries += -L${HIP_PATH}/lib -lamdhip64
+endif
+
+ifeq (${HIP_PLATFORM},nvidia)
+external_libraries += -L${CUDA_ROOT}/lib64 -lcudart -lcuda -lstdc++
+endif
 endif
 
 include ${MAKEINC}/standard_defs.mk

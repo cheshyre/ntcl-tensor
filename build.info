@@ -2,5 +2,6 @@ library_name = ntcl-tensor
 modules = tensor converter construction initializer
 api = api
 use_cuda:dependencies = cuda
+use_hip:dependencies = hip
 uses = ntcl-data ntcl-util
 tests = serial
