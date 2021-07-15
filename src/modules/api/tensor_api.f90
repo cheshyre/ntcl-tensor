@@ -29,6 +29,8 @@ module tensor_api
 
     use :: tensor_initializer_api
 
+    use :: tensor_arithmetic_primitives_api
+
     implicit none
     public
 end module tensor_api

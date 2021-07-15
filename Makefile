@@ -5,8 +5,20 @@ MAKEINC := ${NTCL_ROOT}/ntcl-build/makefile_fragments
 
 include ${MAKEINC}/standard_preample.mk
 
-modules      += tensor converter construction initializer
-test_modules += tensor converter construction initializer
+modules      += tensor converter construction initializer primitives
+test_modules += tensor converter construction initializer primitives
+
+ifdef use_cuda
+modules      += cuda_primitives
+test_modules += cuda_primitives
+FFLAGS += -Duse_cuda
+endif
+
+ifdef use_hip
+modules      += hip_primitives
+test_modules += hip_primitives
+FFLAGS += -Duse_hip
+endif
 
 modules      += api
 test_modules += api
@@ -25,7 +37,7 @@ endif
 
 ifdef use_hip
 ifeq (${HIP_PLATFORM},amd)
-external_libraries += -L${HIP_PATH}/lib -lamdhip64
+external_libraries += -L${HIP_PATH}/lib -lamdhip64 -lstdc++
 endif
 
 ifeq (${HIP_PLATFORM},nvidia)

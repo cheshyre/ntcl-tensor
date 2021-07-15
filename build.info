@@ -1,7 +1,10 @@
 library_name = ntcl-tensor
-modules = tensor converter construction initializer
-api = api
+modules = tensor converter construction initializer primitives
+plugins = cuda_primitives hip_primitives
+use_cuda = cuda_primitives
+use_hip = hip_primitives
 use_cuda:dependencies = cuda
 use_hip:dependencies = hip
+api = api
 uses = ntcl-data ntcl-util
 tests = serial

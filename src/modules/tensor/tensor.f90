@@ -20,6 +20,7 @@ module tensor_module
         procedure :: get_dims => get_dims
         procedure :: get_rank => get_rank
         procedure :: set_dims_and_size => set_dims_and_size
+        procedure :: is_allocated => is_allocated
         procedure :: release => release
         procedure :: cleanup => cleanup
         procedure :: clear => clear
@@ -45,6 +46,12 @@ contains
         this%number_of_elements = product(dims)
         if (this%rank == 0) this%number_of_elements = 1
     end subroutine set_dims_and_size
+
+    pure logical function is_allocated(this)
+        class(tensor), intent(in) :: this
+
+        is_allocated = allocated(this%storage)
+    end function is_allocated
 
     pure integer function get_datatype(this)
         class(tensor), intent(in) :: this
