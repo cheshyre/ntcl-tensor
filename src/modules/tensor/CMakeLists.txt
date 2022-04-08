@@ -1,0 +1,28 @@
+add_library(
+    ntcl_tensor_tensor
+    matrix.f90
+    scalar.f90
+    tensor_array_element.f90
+    tensor_datatype_helper.f90
+    tensor_datatypes.f90
+    tensor_factory.f90
+    tensor_package_api.f90
+    tensor_rank3.f90
+    tensor_rank4.f90
+    tensor_rank5.f90
+    tensor.f90
+    tscalar.f90
+    vector.f90
+)
+add_library(ntcl_tensor::tensor ALIAS ntcl_tensor_tensor)
+target_include_directories(
+    ntcl_tensor_tensor
+    PUBLIC
+    ${CMAKE_CURRENT_BINARY_DIR}
+)
+target_link_libraries(
+    ntcl_tensor_tensor
+    PUBLIC
+    ntcl_util::api
+    ntcl_data_memory
+)
