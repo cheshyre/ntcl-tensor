@@ -8,7 +8,7 @@ add_library(
     tscalar_test.f90
     vector_test.f90
 )
-add_library(ntcl_util::memory_test ALIAS ntcl_tensor_tensor_test)
+add_library(ntcl_tensor::tensor_test ALIAS ntcl_tensor_tensor_test)
 target_include_directories(
     ntcl_tensor_tensor_test
     PUBLIC
