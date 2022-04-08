@@ -1,0 +1,19 @@
+add_library(
+    ntcl_tensor_converter
+    tensor_c_pointer_converter.f90
+    tensor_converter_factory.f90
+    tensor_fortran_converter.f90
+    tensor_converter_interface.f90
+)
+add_library(ntcl_tensor::converter ALIAS ntcl_tensor_converter)
+target_include_directories(
+    ntcl_tensor_converter
+    PUBLIC
+    ${CMAKE_CURRENT_BINARY_DIR}
+)
+target_link_libraries(
+    ntcl_tensor_converter
+    PUBLIC
+    ntcl_data::api
+    ntcl_tensor_tensor
+)
