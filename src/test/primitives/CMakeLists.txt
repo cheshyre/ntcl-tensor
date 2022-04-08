@@ -1,0 +1,19 @@
+add_library(
+    ntcl_tensor_primitives_test
+    primitives_package_test.f90
+    tensor_arithmetic_primitives_test.f90
+    tensor_arithmetic_primitives_test_helper.f90
+)
+add_library(ntcl_util::memory_test ALIAS ntcl_tensor_primitives_test)
+target_include_directories(
+    ntcl_tensor_primitives_test
+    PUBLIC
+    ${CMAKE_CURRENT_BINARY_DIR}
+)
+target_link_libraries(
+    ntcl_tensor_primitives_test
+    PUBLIC
+    ntcl_util::api
+    ntcl_data::api
+    ntcl_tensor_api
+)
