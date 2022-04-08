@@ -1,0 +1,24 @@
+add_library(
+    ntcl_tensor_tensor_test
+    tensor_package_test.f90
+    matrix_test.f90
+    tensor_rank3_test.f90
+    tensor_rank4_test.f90
+    tensor_rank5_test.f90
+    tscalar_test.f90
+    vector_test.f90
+)
+add_library(ntcl_util::memory_test ALIAS ntcl_tensor_tensor_test)
+target_include_directories(
+    ntcl_tensor_tensor_test
+    PUBLIC
+    ${CMAKE_CURRENT_BINARY_DIR}
+)
+target_link_libraries(
+    ntcl_tensor_tensor_test
+    PUBLIC
+    ntcl_util::api
+    ntcl_data::memory_api
+    ntcl_tensor_api
+    ntcl_tensor_tensor
+)
