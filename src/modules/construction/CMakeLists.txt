@@ -1,0 +1,20 @@
+add_library(
+    ntcl_tensor_construction
+    tensor_builder.f90
+    tensor_builder_factory.f90
+    tensor_builder_interface.f90
+    tensor_construction_api.f90
+)
+add_library(ntcl_tensor::construction ALIAS ntcl_tensor_construction)
+target_include_directories(
+    ntcl_tensor_construction
+    PUBLIC
+    ${CMAKE_CURRENT_BINARY_DIR}
+)
+target_link_libraries(
+    ntcl_tensor_construction
+    PUBLIC
+    ntcl_util::api
+    ntcl_data::api
+    ntcl_tensor_tensor
+)
