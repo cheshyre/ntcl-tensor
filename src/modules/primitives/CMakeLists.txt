@@ -1,0 +1,22 @@
+add_library(
+    ntcl_tensor_primitives
+    intrinsic_tap.f90
+    tap_factory.f90
+    tensor_arithmetic_primitives.f90
+    tensor_arithmetic_primitives_api.f90
+    tensor_arithmetic_primitives_dev.f90
+)
+add_library(ntcl_tensor::primitives ALIAS ntcl_tensor_primitives)
+target_include_directories(
+    ntcl_tensor_primitives
+    PUBLIC
+    ${CMAKE_CURRENT_BINARY_DIR}
+)
+target_link_libraries(
+    ntcl_tensor_primitives
+    PUBLIC
+    ntcl_util::api
+    ntcl_data::api
+    ntcl_tensor_tensor
+    ntcl_tensor_converter
+)
