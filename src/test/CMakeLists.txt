@@ -1,0 +1,7 @@
+add_subdirectory(api)
+add_subdirectory(construction)
+add_subdirectory(converter)
+add_subdirectory(initializer)
+add_subdirectory(primitives)
+add_subdirectory(tensor)
+add_subdirectory(unittest)

@@ -1,0 +1,16 @@
+add_executable(
+    ntcl_tensor_unittest
+    unittest.F90
+)
+target_link_libraries(
+    ntcl_tensor_unittest
+    PUBLIC
+    ntcl_util::api
+    ntcl_tensor_api
+    ntcl_tensor_tensor_test
+    ntcl_tensor_converter_test
+    ntcl_tensor_construction_test
+    ntcl_tensor_initializer_test
+    ntcl_tensor_primitives_test
+    ntcl_tensor_api_test
+)

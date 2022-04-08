@@ -1,0 +1,24 @@
+add_library(
+    ntcl_tensor_api
+    tensor_api.f90
+    default_tap_factory.F90
+    tensor_dev.f90
+    tensor_initializer.f90
+)
+add_library(ntcl_tensor::api ALIAS ntcl_tensor_api)
+target_include_directories(
+    ntcl_tensor_api
+    PUBLIC
+    ${CMAKE_CURRENT_BINARY_DIR}
+)
+target_link_libraries(
+    ntcl_tensor_api
+    PUBLIC
+    ntcl_util::api
+    ntcl_data::api
+    ntcl_tensor_tensor
+    ntcl_tensor_converter
+    ntcl_tensor_construction
+    ntcl_tensor_initializer
+    ntcl_tensor_primitives
+)
